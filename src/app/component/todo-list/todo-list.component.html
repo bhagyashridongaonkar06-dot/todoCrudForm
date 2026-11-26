@@ -1,0 +1,25 @@
+<div class="card">
+    <div class="card-body">
+        <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between" *ngFor="let todo of todosArr">
+                <div>
+                    <input type="checkbox" (click)="onCheckChange(todo)" class="mr-2" [checked]="todo.isCompleted">    
+
+                    <strong>{{todo.todoName}} <span class="badge p-1 text-dark" [ngClass]="{
+                        'badge-success' : todo.isCompleted,
+                        'badge-danger' : !todo.isCompleted
+                    }">{{todo.isCompleted ? 'completed' : 'Not Completed'}}</span></strong>
+                </div>
+
+                <div>
+                    <button 
+                    (click)="editTodo(todo)"
+                    mat-raised-button class="mr-2" color="primary" ><mat-icon>edit</mat-icon></button>
+                    <button 
+                    (click)="removeTodo(todo.todoId)"
+                    mat-raised-button color="warn"><mat-icon>delete</mat-icon></button>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

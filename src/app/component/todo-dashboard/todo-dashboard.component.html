@@ -1,0 +1,11 @@
+<h2 class="bg-warning text-center">Todo Crud using Input Output(IO) with checkBox</h2>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <app-todo-form (emitNewTodo)="sendNewTodo($event)"  (emitUpdateObj)="onUpdate($event)" [getEditObj]="sendEditObj"></app-todo-form>
+        </div>
+        <div class="col-md-6">
+        <app-todo-list [todosArr]="todoArr" (emitEditTodo)="onEdit($event)" (emitRemoveTodo)="onDelete($event)"></app-todo-list>
+        </div>
+    </div>
+</div>
