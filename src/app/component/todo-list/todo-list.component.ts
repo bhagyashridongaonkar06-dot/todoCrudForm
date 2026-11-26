@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ItodosArr } from 'src/app/model/interfaces';
+import { SnackbarService } from 'src/app/service/snackbar.service';
 
 @Component({
   selector: 'app-todo-list',
@@ -8,7 +9,7 @@ import { ItodosArr } from 'src/app/model/interfaces';
 })
 export class TodoListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _snackbar : SnackbarService) { }
 
   @Output() emitEditTodo : EventEmitter<ItodosArr> = new EventEmitter<ItodosArr>()
   @Output() emitRemoveTodo : EventEmitter<string> = new EventEmitter<string>()
@@ -33,6 +34,8 @@ export class TodoListComponent implements OnInit {
 
   onCheckChange(todo : ItodosArr){
     todo.isCompleted = !todo.isCompleted
+    this._snackbar.successMSg(`Todo with status ${todo.isCompleted} updated successfully`)
+
   }
 
 }
